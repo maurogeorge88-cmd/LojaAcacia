@@ -1,812 +1,1549 @@
-<html xmlns:v="urn:schemas-microsoft-com:vml"
-xmlns:o="urn:schemas-microsoft-com:office:office"
-xmlns:w="urn:schemas-microsoft-com:office:word"
-xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
-xmlns="http://www.w3.org/TR/REC-html40">
+import React, { useState, useEffect } from 'react';
+import { User, Users, Settings, LogOut, Search, Plus, Edit2, Trash2, Download, Eye, X } from 'lucide-react';
 
-<head>
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=ProgId content=Word.Document>
-<meta name=Generator content="Microsoft Word 15">
-<meta name=Originator content="Microsoft Word 15">
-<link rel=File-List href="Index_arquivos/filelist.xml">
-<!--[if gte mso 9]><xml>
- <o:DocumentProperties>
-  <o:Author>Mauro</o:Author>
-  <o:LastAuthor>Mauro</o:LastAuthor>
-  <o:Revision>1</o:Revision>
-  <o:TotalTime>1</o:TotalTime>
-  <o:Created>2025-11-20T14:04:00Z</o:Created>
-  <o:LastSaved>2025-11-20T14:05:00Z</o:LastSaved>
-  <o:Pages>1</o:Pages>
-  <o:Words>97</o:Words>
-  <o:Characters>530</o:Characters>
-  <o:Lines>4</o:Lines>
-  <o:Paragraphs>1</o:Paragraphs>
-  <o:CharactersWithSpaces>626</o:CharactersWithSpaces>
-  <o:Version>16.00</o:Version>
- </o:DocumentProperties>
- <o:OfficeDocumentSettings>
-  <o:AllowPNG/>
- </o:OfficeDocumentSettings>
-</xml><![endif]-->
-<link rel=themeData href="Index_arquivos/themedata.thmx">
-<link rel=colorSchemeMapping href="Index_arquivos/colorschememapping.xml">
-<!--[if gte mso 9]><xml>
- <w:WordDocument>
-  <w:SpellingState>Clean</w:SpellingState>
-  <w:GrammarState>Clean</w:GrammarState>
-  <w:TrackMoves>false</w:TrackMoves>
-  <w:TrackFormatting/>
-  <w:HyphenationZone>21</w:HyphenationZone>
-  <w:PunctuationKerning/>
-  <w:ValidateAgainstSchemas/>
-  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
-  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
-  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
-  <w:DoNotPromoteQF/>
-  <w:LidThemeOther>PT-BR</w:LidThemeOther>
-  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
-  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
-  <w:Compatibility>
-   <w:BreakWrappedTables/>
-   <w:SnapToGridInCell/>
-   <w:WrapTextWithPunct/>
-   <w:UseAsianBreakRules/>
-   <w:DontGrowAutofit/>
-   <w:SplitPgBreakAndParaMark/>
-   <w:EnableOpenTypeKerning/>
-   <w:DontFlipMirrorIndents/>
-   <w:OverrideTableStyleHps/>
-  </w:Compatibility>
-  <m:mathPr>
-   <m:mathFont m:val="Cambria Math"/>
-   <m:brkBin m:val="before"/>
-   <m:brkBinSub m:val="&#45;-"/>
-   <m:smallFrac m:val="off"/>
-   <m:dispDef/>
-   <m:lMargin m:val="0"/>
-   <m:rMargin m:val="0"/>
-   <m:defJc m:val="centerGroup"/>
-   <m:wrapIndent m:val="1440"/>
-   <m:intLim m:val="subSup"/>
-   <m:naryLim m:val="undOvr"/>
-  </m:mathPr></w:WordDocument>
-</xml><![endif]--><!--[if gte mso 9]><xml>
- <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
-  DefSemiHidden="false" DefQFormat="false" DefPriority="99"
-  LatentStyleCount="375">
-  <w:LsdException Locked="false" Priority="0" QFormat="true" Name="Normal"/>
-  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 1"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 2"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 3"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 4"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 5"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 6"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 7"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>
-  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="heading 9"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 6"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 7"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 8"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index 9"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 1"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 2"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 3"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 4"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 5"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 6"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 7"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 8"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" Name="toc 9"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Normal Indent"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="footnote text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="annotation text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="header"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="footer"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="index heading"/>
-  <w:LsdException Locked="false" Priority="35" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="caption"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="table of figures"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="envelope address"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="envelope return"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="footnote reference"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="annotation reference"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="line number"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="page number"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="endnote reference"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="endnote text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="table of authorities"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="macro"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="toa heading"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Bullet 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Number 5"/>
-  <w:LsdException Locked="false" Priority="10" QFormat="true" Name="Title"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Closing"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Signature"/>
-  <w:LsdException Locked="false" Priority="1" SemiHidden="true"
-   UnhideWhenUsed="true" Name="Default Paragraph Font"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text Indent"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="List Continue 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Message Header"/>
-  <w:LsdException Locked="false" Priority="11" QFormat="true" Name="Subtitle"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Salutation"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Date"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text First Indent"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text First Indent 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Note Heading"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text Indent 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Body Text Indent 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Block Text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Hyperlink"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="FollowedHyperlink"/>
-  <w:LsdException Locked="false" Priority="22" QFormat="true" Name="Strong"/>
-  <w:LsdException Locked="false" Priority="20" QFormat="true" Name="Emphasis"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Document Map"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Plain Text"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="E-mail Signature"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Top of Form"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Bottom of Form"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Normal (Web)"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Acronym"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Address"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Cite"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Code"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Definition"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Keyboard"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Preformatted"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Sample"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Typewriter"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="HTML Variable"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Normal Table"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="annotation subject"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="No List"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Outline List 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Outline List 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Outline List 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Simple 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Simple 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Simple 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Classic 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Classic 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Classic 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Classic 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Colorful 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Colorful 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Colorful 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Columns 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 6"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 7"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Grid 8"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 4"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 5"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 6"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 7"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table List 8"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table 3D effects 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table 3D effects 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table 3D effects 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Contemporary"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Elegant"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Professional"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Subtle 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Subtle 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Web 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Web 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Web 3"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Balloon Text"/>
-  <w:LsdException Locked="false" Priority="39" Name="Table Grid"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Theme"/>
-  <w:LsdException Locked="false" SemiHidden="true" Name="Placeholder Text"/>
-  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
-  <w:LsdException Locked="false" SemiHidden="true" Name="Revision"/>
-  <w:LsdException Locked="false" Priority="34" QFormat="true"
-   Name="List Paragraph"/>
-  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
-  <w:LsdException Locked="false" Priority="30" QFormat="true"
-   Name="Intense Quote"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
-  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
-  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
-  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
-  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
-  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
-  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
-  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
-  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
-  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
-  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
-  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
-  <w:LsdException Locked="false" Priority="19" QFormat="true"
-   Name="Subtle Emphasis"/>
-  <w:LsdException Locked="false" Priority="21" QFormat="true"
-   Name="Intense Emphasis"/>
-  <w:LsdException Locked="false" Priority="31" QFormat="true"
-   Name="Subtle Reference"/>
-  <w:LsdException Locked="false" Priority="32" QFormat="true"
-   Name="Intense Reference"/>
-  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
-  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
-   UnhideWhenUsed="true" Name="Bibliography"/>
-  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
-   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
-  <w:LsdException Locked="false" Priority="41" Name="Plain Table 1"/>
-  <w:LsdException Locked="false" Priority="42" Name="Plain Table 2"/>
-  <w:LsdException Locked="false" Priority="43" Name="Plain Table 3"/>
-  <w:LsdException Locked="false" Priority="44" Name="Plain Table 4"/>
-  <w:LsdException Locked="false" Priority="45" Name="Plain Table 5"/>
-  <w:LsdException Locked="false" Priority="40" Name="Grid Table Light"/>
-  <w:LsdException Locked="false" Priority="46" Name="Grid Table 1 Light"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark"/>
-  <w:LsdException Locked="false" Priority="51" Name="Grid Table 6 Colorful"/>
-  <w:LsdException Locked="false" Priority="52" Name="Grid Table 7 Colorful"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 1"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 1"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 1"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 1"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 1"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 1"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 2"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 2"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 2"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 2"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 2"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 2"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 3"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 3"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 3"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 3"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 3"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 3"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 4"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 4"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 4"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 4"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 4"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 4"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 5"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 5"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 5"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 5"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 5"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 5"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="Grid Table 1 Light Accent 6"/>
-  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 6"/>
-  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 6"/>
-  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 6"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="Grid Table 6 Colorful Accent 6"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="Grid Table 7 Colorful Accent 6"/>
-  <w:LsdException Locked="false" Priority="46" Name="List Table 1 Light"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark"/>
-  <w:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful"/>
-  <w:LsdException Locked="false" Priority="52" Name="List Table 7 Colorful"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 1"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 1"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 1"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 1"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 1"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 1"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 1"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 2"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 2"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 2"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 2"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 2"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 2"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 2"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 3"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 3"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 3"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 3"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 3"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 3"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 3"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 4"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 4"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 4"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 4"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 4"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 4"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 4"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 5"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 5"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 5"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 5"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 5"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 5"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 5"/>
-  <w:LsdException Locked="false" Priority="46"
-   Name="List Table 1 Light Accent 6"/>
-  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 6"/>
-  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 6"/>
-  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 6"/>
-  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 6"/>
-  <w:LsdException Locked="false" Priority="51"
-   Name="List Table 6 Colorful Accent 6"/>
-  <w:LsdException Locked="false" Priority="52"
-   Name="List Table 7 Colorful Accent 6"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Mention"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Smart Hyperlink"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Hashtag"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Unresolved Mention"/>
- </w:LatentStyles>
-</xml><![endif]-->
-<style>
-<!--
- /* Font Definitions */
- @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:roman;
-	mso-font-pitch:variable;
-	mso-font-signature:3 0 0 0 1 0;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:swiss;
-	mso-font-pitch:variable;
-	mso-font-signature:-469750017 -1073732485 9 0 511 0;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{mso-style-unhide:no;
-	mso-style-qformat:yes;
-	mso-style-parent:"";
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:8.0pt;
-	margin-left:0cm;
-	line-height:107%;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:Calibri;
-	mso-fareast-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;
-	mso-fareast-language:EN-US;}
-span.SpellE
-	{mso-style-name:"";
-	mso-spl-e:yes;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	mso-default-props:yes;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-fareast-font-family:Calibri;
-	mso-fareast-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;
-	mso-fareast-language:EN-US;}
-.MsoPapDefault
-	{mso-style-type:export-only;
-	margin-bottom:8.0pt;
-	line-height:107%;}
-@page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:70.85pt 3.0cm 70.85pt 3.0cm;
-	mso-header-margin:35.4pt;
-	mso-footer-margin:35.4pt;
-	mso-paper-source:0;}
-div.WordSection1
-	{page:WordSection1;}
--->
-</style>
-<!--[if gte mso 10]>
-<style>
- /* Style Definitions */
- table.MsoNormalTable
-	{mso-style-name:"Tabela normal";
-	mso-tstyle-rowband-size:0;
-	mso-tstyle-colband-size:0;
-	mso-style-noshow:yes;
-	mso-style-priority:99;
-	mso-style-parent:"";
-	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
-	mso-para-margin-top:0cm;
-	mso-para-margin-right:0cm;
-	mso-para-margin-bottom:8.0pt;
-	mso-para-margin-left:0cm;
-	line-height:107%;
-	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ascii-font-family:Calibri;
-	mso-ascii-theme-font:minor-latin;
-	mso-hansi-font-family:Calibri;
-	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;
-	mso-fareast-language:EN-US;}
-</style>
-<![endif]--><!--[if gte mso 9]><xml>
- <o:shapedefaults v:ext="edit" spidmax="1026"/>
-</xml><![endif]--><!--[if gte mso 9]><xml>
- <o:shapelayout v:ext="edit">
-  <o:idmap v:ext="edit" data="1"/>
- </o:shapelayout></xml><![endif]-->
-</head>
+// Componente principal
+export default function SistemaLojaMaconica() {
+  const [telaAtual, setTelaAtual] = useState('login');
+  const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [configuracoes, setConfiguracoes] = useState(null);
+  const [carregando, setCarregando] = useState(true);
 
-<body lang=PT-BR style='tab-interval:35.4pt'>
+  useEffect(() => {
+    carregarDados();
+  }, []);
 
-<div class=WordSection1>
+  const carregarDados = async () => {
+    try {
+      const config = await window.storage.get('config-loja');
+      if (config) {
+        setConfiguracoes(JSON.parse(config.value));
+      }
+    } catch (error) {
+      console.log('Primeira inicialização do sistema');
+    }
+    setCarregando(false);
+  };
 
-<p class=MsoNormal>&lt;!DOCTYPE <span class=SpellE>html</span>&gt;<o:p></o:p></p>
+  const handleLogin = (usuario) => {
+    setUsuarioLogado(usuario);
+    setTelaAtual('dashboard');
+  };
 
-<p class=MsoNormal>&lt;<span class=SpellE>html</span> <span class=SpellE>lang</span>=&quot;<span
-class=SpellE>pt</span>-BR&quot;&gt;<o:p></o:p></p>
+  const handleLogout = () => {
+    setUsuarioLogado(null);
+    setTelaAtual('login');
+  };
 
-<p class=MsoNormal>&lt;<span class=SpellE>head</span>&gt;<o:p></o:p></p>
+  if (carregando) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+        <div className="text-white text-xl">Carregando sistema...</div>
+      </div>
+    );
+  }
 
-<p class=MsoNormal><span style='mso-spacerun:yes'>��� </span>&lt;meta <span
-class=SpellE>charset</span>=&quot;UTF-8&quot;&gt;<o:p></o:p></p>
+  if (telaAtual === 'login') {
+    return <TelaLogin onLogin={handleLogin} configuracoes={configuracoes} />;
+  }
 
-<p class=MsoNormal><span style='mso-spacerun:yes'>��� </span>&lt;meta <span
-class=SpellE>name</span>=&quot;<span class=SpellE>viewport</span>&quot; <span
-class=SpellE>content</span>=&quot;<span class=SpellE>width</span>=<span
-class=SpellE>device-width</span>, <span class=SpellE>initial-scale</span>=1.0&quot;&gt;<o:p></o:p></p>
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <Header 
+        configuracoes={configuracoes} 
+        usuarioLogado={usuarioLogado}
+        onLogout={handleLogout}
+      />
+      <div className="flex">
+        <Sidebar telaAtual={telaAtual} setTelaAtual={setTelaAtual} />
+        <main className="flex-1 p-6">
+          {telaAtual === 'dashboard' && <Dashboard />}
+          {telaAtual === 'irmaos' && <ModuloIrmaos />}
+          {telaAtual === 'usuarios' && <ModuloUsuarios />}
+          {telaAtual === 'configuracoes' && <ModuloConfiguracoes setConfiguracoes={setConfiguracoes} />}
+        </main>
+      </div>
+    </div>
+  );
+}
 
-<p class=MsoNormal><span style='mso-spacerun:yes'>��� </span>&lt;<span
-class=SpellE>title</span>&gt;Sistema Loja Ma��nica&lt;/<span class=SpellE>title</span>&gt;<o:p></o:p></p>
+// Componente de Login
+function TelaLogin({ onLogin, configuracoes }) {
+  const [usuario, setUsuario] = useState('');
+  const [senha, setSenha] = useState('');
+  const [erro, setErro] = useState('');
+  const [primeiroAcesso, setPrimeiroAcesso] = useState(false);
 
-<p class=MsoNormal><span style='mso-spacerun:yes'>��� </span>&lt;script <span
-class=SpellE>crossorigin</span>
-src=&quot;https://unpkg.com/react@18/umd/react.production.min.js&quot;&gt;&lt;/script&gt;<o:p></o:p></p>
+  useEffect(() => {
+    verificarPrimeiroAcesso();
+  }, []);
 
-<p class=MsoNormal><span style='mso-spacerun:yes'>��� </span>&lt;script <span
-class=SpellE>crossorigin</span>
-src=&quot;https://unpkg.com/react-dom@18/umd/react-dom.production.min.js&quot;&gt;&lt;/script&gt;<o:p></o:p></p>
+  const verificarPrimeiroAcesso = async () => {
+    try {
+      await window.storage.get('usuarios');
+    } catch (error) {
+      setPrimeiroAcesso(true);
+    }
+  };
 
-<p class=MsoNormal><span style='mso-spacerun:yes'>��� </span>&lt;script <span
-class=SpellE>src</span>=&quot;https://unpkg.com/@babel/<span class=SpellE>standalone</span>/babel.min.js&quot;&gt;&lt;/script&gt;<o:p></o:p></p>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErro('');
 
-<p class=MsoNormal><span style='mso-spacerun:yes'>��� </span>&lt;script <span
-class=SpellE>src</span>=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;<o:p></o:p></p>
+    try {
+      const result = await window.storage.get('usuarios');
+      const usuarios = result ? JSON.parse(result.value) : [];
 
-<p class=MsoNormal>&lt;/<span class=SpellE>head</span>&gt;<o:p></o:p></p>
+      if (usuarios.length === 0 && primeiroAcesso) {
+        const novoUsuario = { id: Date.now(), usuario, senha, admin: true };
+        await window.storage.set('usuarios', JSON.stringify([novoUsuario]));
+        onLogin(novoUsuario);
+        return;
+      }
 
-<p class=MsoNormal>&lt;<span class=SpellE>body</span>&gt;<o:p></o:p></p>
+      const usuarioEncontrado = usuarios.find(u => u.usuario === usuario && u.senha === senha);
+      if (usuarioEncontrado) {
+        onLogin(usuarioEncontrado);
+      } else {
+        setErro('Usuário ou senha incorretos');
+      }
+    } catch (error) {
+      setErro('Erro ao fazer login');
+    }
+  };
 
-<p class=MsoNormal><span style='mso-spacerun:yes'>��� </span>&lt;<span
-class=SpellE>div</span> id=&quot;root&quot;&gt;&lt;/<span class=SpellE>div</span>&gt;<o:p></o:p></p>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md">
+        {configuracoes?.logo && (
+          <div className="text-center mb-6">
+            <img src={configuracoes.logo} alt="Logo" className="h-24 mx-auto mb-4" />
+          </div>
+        )}
+        <h1 className="text-3xl font-bold text-center text-blue-900 mb-2">
+          {configuracoes?.nomeLoja || 'Sistema Loja Maçônica'}
+        </h1>
+        <p className="text-center text-gray-600 mb-6">
+          {primeiroAcesso ? 'Primeiro Acesso - Crie seu usuário administrador' : 'Controle de Acesso'}
+        </p>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Usuário
+            </label>
+            <input
+              type="text"
+              value={usuario}
+              onChange={(e) => setUsuario(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Senha
+            </label>
+            <input
+              type="password"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required
+            />
+          </div>
+          {erro && (
+            <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm">
+              {erro}
+            </div>
+          )}
+          <button
+            type="submit"
+            className="w-full bg-blue-900 text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
+          >
+            {primeiroAcesso ? 'Criar Usuário e Entrar' : 'Entrar'}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
 
-<p class=MsoNormal><span style='mso-spacerun:yes'>��� </span>&lt;script <span
-class=SpellE>type</span>=&quot;<span class=SpellE>text</span>/babel&quot; <span
-class=SpellE>src</span>=&quot;app.js&quot;&gt;&lt;/script&gt;<o:p></o:p></p>
+// Header
+function Header({ configuracoes, usuarioLogado, onLogout }) {
+  return (
+    <header className="bg-blue-900 text-white shadow-lg">
+      <div className="px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          {configuracoes?.logo && (
+            <img src={configuracoes.logo} alt="Logo" className="h-12" />
+          )}
+          <div>
+            <h1 className="text-2xl font-bold">{configuracoes?.nomeLoja || 'Loja Maçônica'}</h1>
+            <p className="text-sm text-blue-200">Sistema de Gestão</p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-4">
+          <div className="text-right">
+            <p className="font-medium">{usuarioLogado?.usuario}</p>
+            <p className="text-xs text-blue-200">Usuário ativo</p>
+          </div>
+          <button
+            onClick={onLogout}
+            className="bg-blue-800 hover:bg-blue-700 px-4 py-2 rounded-lg flex items-center space-x-2 transition"
+          >
+            <LogOut size={18} />
+            <span>Sair</span>
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
 
-<p class=MsoNormal>&lt;/<span class=SpellE>body</span>&gt;<o:p></o:p></p>
+// Sidebar
+function Sidebar({ telaAtual, setTelaAtual }) {
+  const menus = [
+    { id: 'dashboard', nome: 'Painel', icone: User },
+    { id: 'irmaos', nome: 'Irmãos', icone: Users },
+    { id: 'usuarios', nome: 'Usuários', icone: User },
+    { id: 'configuracoes', nome: 'Configurações', icone: Settings },
+  ];
 
-<p class=MsoNormal>&lt;/<span class=SpellE>html</span>&gt;</p>
+  return (
+    <aside className="w-64 bg-white shadow-lg min-h-screen">
+      <nav className="p-4">
+        {menus.map((menu) => {
+          const Icone = menu.icone;
+          return (
+            <button
+              key={menu.id}
+              onClick={() => setTelaAtual(menu.id)}
+              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg mb-2 transition ${
+                telaAtual === menu.id
+                  ? 'bg-blue-900 text-white'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              <Icone size={20} />
+              <span className="font-medium">{menu.nome}</span>
+            </button>
+          );
+        })}
+      </nav>
+    </aside>
+  );
+}
 
-</div>
+// Dashboard
+function Dashboard() {
+  const [estatisticas, setEstatisticas] = useState({ total: 0, ativos: 0, inativos: 0 });
 
-</body>
+  useEffect(() => {
+    carregarEstatisticas();
+  }, []);
 
-</html>
+  const carregarEstatisticas = async () => {
+    try {
+      const result = await window.storage.get('irmaos');
+      if (result) {
+        const irmaos = JSON.parse(result.value);
+        const ativos = irmaos.filter(i => i.status === 'Ativo').length;
+        setEstatisticas({
+          total: irmaos.length,
+          ativos: ativos,
+          inativos: irmaos.length - ativos
+        });
+      }
+    } catch (error) {
+      console.log('Nenhum dado ainda');
+    }
+  };
+
+  return (
+    <div>
+      <h2 className="text-3xl font-bold text-gray-800 mb-6">Painel de Controle</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-white rounded-lg shadow p-6">
+          <h3 className="text-gray-500 text-sm font-medium mb-2">Total de Irmãos</h3>
+          <p className="text-4xl font-bold text-blue-900">{estatisticas.total}</p>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6">
+          <h3 className="text-gray-500 text-sm font-medium mb-2">Irmãos Ativos</h3>
+          <p className="text-4xl font-bold text-green-600">{estatisticas.ativos}</p>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6">
+          <h3 className="text-gray-500 text-sm font-medium mb-2">Irmãos Inativos</h3>
+          <p className="text-4xl font-bold text-red-600">{estatisticas.inativos}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Módulo de Irmãos
+function ModuloIrmaos() {
+  const [visualizacao, setVisualizacao] = useState('lista');
+  const [irmaos, setIrmaos] = useState([]);
+  const [irmaoSelecionado, setIrmaoSelecionado] = useState(null);
+  const [pesquisa, setPesquisa] = useState('');
+  const [carregando, setCarregando] = useState(true);
+
+  useEffect(() => {
+    carregarIrmaos();
+  }, []);
+
+  const carregarIrmaos = async () => {
+    try {
+      const result = await window.storage.get('irmaos');
+      if (result) {
+        setIrmaos(JSON.parse(result.value));
+      }
+    } catch (error) {
+      console.log('Nenhum irmão cadastrado ainda');
+    }
+    setCarregando(false);
+  };
+
+  const salvarIrmaos = async (novosIrmaos) => {
+    try {
+      await window.storage.set('irmaos', JSON.stringify(novosIrmaos));
+      setIrmaos(novosIrmaos);
+    } catch (error) {
+      alert('Erro ao salvar dados');
+    }
+  };
+
+  const handleNovo = () => {
+    setIrmaoSelecionado(null);
+    setVisualizacao('formulario');
+  };
+
+  const handleEditar = (irmao) => {
+    setIrmaoSelecionado(irmao);
+    setVisualizacao('formulario');
+  };
+
+  const handleVisualizar = (irmao) => {
+    setIrmaoSelecionado(irmao);
+    setVisualizacao('detalhes');
+  };
+
+  const handleExcluir = async (id) => {
+    if (confirm('Deseja realmente excluir este irmão?')) {
+      const novosIrmaos = irmaos.filter(i => i.id !== id);
+      await salvarIrmaos(novosIrmaos);
+    }
+  };
+
+  const handleSalvar = async (irmao) => {
+    let novosIrmaos;
+    if (irmao.id) {
+      novosIrmaos = irmaos.map(i => i.id === irmao.id ? irmao : i);
+    } else {
+      irmao.id = Date.now();
+      novosIrmaos = [...irmaos, irmao];
+    }
+    await salvarIrmaos(novosIrmaos);
+    setVisualizacao('lista');
+  };
+
+  const irmaosFiltrados = irmaos.filter(i => 
+    i.nome.toLowerCase().includes(pesquisa.toLowerCase()) ||
+    i.cim.toLowerCase().includes(pesquisa.toLowerCase())
+  );
+
+  if (visualizacao === 'formulario') {
+    return (
+      <FormularioIrmao
+        irmao={irmaoSelecionado}
+        onSalvar={handleSalvar}
+        onCancelar={() => setVisualizacao('lista')}
+      />
+    );
+  }
+
+  if (visualizacao === 'detalhes') {
+    return (
+      <DetalhesIrmao
+        irmao={irmaoSelecionado}
+        onVoltar={() => setVisualizacao('lista')}
+        onEditar={() => setVisualizacao('formulario')}
+      />
+    );
+  }
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-800">Cadastro de Irmãos</h2>
+        <button
+          onClick={handleNovo}
+          className="bg-blue-900 text-white px-6 py-3 rounded-lg flex items-center space-x-2 hover:bg-blue-800 transition"
+        >
+          <Plus size={20} />
+          <span>Novo Irmão</span>
+        </button>
+      </div>
+
+      <div className="bg-white rounded-lg shadow p-6 mb-6">
+        <div className="flex items-center space-x-2">
+          <Search className="text-gray-400" size={20} />
+          <input
+            type="text"
+            placeholder="Pesquisar por nome ou CIM..."
+            value={pesquisa}
+            onChange={(e) => setPesquisa(e.target.value)}
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+      </div>
+
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <table className="w-full">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">CIM</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nome</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cargo</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tempo Maçonaria</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Ações</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {irmaosFiltrados.map((irmao) => (
+              <tr key={irmao.id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 text-sm text-gray-900">{irmao.cim}</td>
+                <td className="px-6 py-4 text-sm font-medium text-gray-900">{irmao.nome}</td>
+                <td className="px-6 py-4 text-sm text-gray-600">{irmao.cargoAtual}</td>
+                <td className="px-6 py-4">
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    irmao.status === 'Ativo' 
+                      ? 'bg-green-100 text-green-800' 
+                      : 'bg-red-100 text-red-800'
+                  }`}>
+                    {irmao.status}
+                  </span>
+                </td>
+                <td className="px-6 py-4 text-sm text-gray-600">{irmao.tempoMaconaria}</td>
+                <td className="px-6 py-4 text-sm">
+                  <div className="flex space-x-2">
+                    <button
+                      onClick={() => handleVisualizar(irmao)}
+                      className="text-blue-600 hover:text-blue-800"
+                      title="Visualizar"
+                    >
+                      <Eye size={18} />
+                    </button>
+                    <button
+                      onClick={() => handleEditar(irmao)}
+                      className="text-yellow-600 hover:text-yellow-800"
+                      title="Editar"
+                    >
+                      <Edit2 size={18} />
+                    </button>
+                    <button
+                      onClick={() => handleExcluir(irmao.id)}
+                      className="text-red-600 hover:text-red-800"
+                      title="Excluir"
+                    >
+                      <Trash2 size={18} />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {irmaosFiltrados.length === 0 && (
+          <div className="text-center py-12 text-gray-500">
+            {pesquisa ? 'Nenhum irmão encontrado' : 'Nenhum irmão cadastrado ainda'}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Formulário de Irmão
+function FormularioIrmao({ irmao, onSalvar, onCancelar }) {
+  const [dados, setDados] = useState(irmao || {
+    cim: '', nome: '', cpf: '', rg: '', dataNascimento: '', estadoCivil: '',
+    profissao: '', formacao: '', status: 'Ativo', naturalidade: '', endereco: '',
+    cidade: '', celular: '', email: '', localTrabalho: '', foto: '', cargoAtual: '',
+    dataIniciacao: '', dataElevacao: '', dataExaltacao: '', tempoMaconaria: '',
+    esposa: { nome: '', dataNascimento: '' },
+    pai: { nome: '', dataNascimento: '', falecido: false, dataObito: '' },
+    mae: { nome: '', dataNascimento: '', falecido: false, dataObito: '' },
+    filhos: [],
+    historioCargos: []
+  });
+
+  const calcularTempoMaconaria = (dataIniciacao) => {
+    if (!dataIniciacao) return '';
+    const inicio = new Date(dataIniciacao);
+    const hoje = new Date();
+    const anos = hoje.getFullYear() - inicio.getFullYear();
+    const meses = hoje.getMonth() - inicio.getMonth();
+    const totalMeses = anos * 12 + meses;
+    const anosCompletos = Math.floor(totalMeses / 12);
+    const mesesRestantes = totalMeses % 12;
+    return `${anosCompletos} anos e ${mesesRestantes} meses`;
+  };
+
+  const handleChange = (campo, valor) => {
+    const novosDados = { ...dados, [campo]: valor };
+    if (campo === 'dataIniciacao') {
+      novosDados.tempoMaconaria = calcularTempoMaconaria(valor);
+    }
+    setDados(novosDados);
+  };
+
+  const handleChangeAninhado = (objeto, campo, valor) => {
+    setDados({
+      ...dados,
+      [objeto]: { ...dados[objeto], [campo]: valor }
+    });
+  };
+
+  const handleAdicionarFilho = () => {
+    setDados({
+      ...dados,
+      filhos: [...dados.filhos, { nome: '', dataNascimento: '', falecido: false, dataObito: '' }]
+    });
+  };
+
+  const handleRemoverFilho = (index) => {
+    const novosFilhos = dados.filhos.filter((_, i) => i !== index);
+    setDados({ ...dados, filhos: novosFilhos });
+  };
+
+  const handleChangeFilho = (index, campo, valor) => {
+    const novosFilhos = [...dados.filhos];
+    novosFilhos[index] = { ...novosFilhos[index], [campo]: valor };
+    setDados({ ...dados, filhos: novosFilhos });
+  };
+
+  const handleAdicionarCargo = () => {
+    setDados({
+      ...dados,
+      historioCargos: [...dados.historioCargos, { ano: '', cargo: '' }]
+    });
+  };
+
+  const handleRemoverCargo = (index) => {
+    const novosCargos = dados.historioCargos.filter((_, i) => i !== index);
+    setDados({ ...dados, historioCargos: novosCargos });
+  };
+
+  const handleChangeCargo = (index, campo, valor) => {
+    const novosCargos = [...dados.historioCargos];
+    novosCargos[index] = { ...novosCargos[index], [campo]: valor };
+    setDados({ ...dados, historioCargos: novosCargos });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSalvar(dados);
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-800">
+          {irmao ? 'Editar Irmão' : 'Novo Irmão'}
+        </h2>
+        <button
+          onClick={onCancelar}
+          className="text-gray-600 hover:text-gray-800"
+        >
+          <X size={24} />
+        </button>
+      </div>
+
+      <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-6 space-y-6">
+        {/* Dados Pessoais */}
+        <div>
+          <h3 className="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Dados Pessoais</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">CIM *</label>
+              <input
+                type="text"
+                value={dados.cim}
+                onChange={(e) => handleChange('cim', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Nome Completo *</label>
+              <input
+                type="text"
+                value={dados.nome}
+                onChange={(e) => handleChange('nome', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">CPF</label>
+              <input
+                type="text"
+                value={dados.cpf}
+                onChange={(e) => handleChange('cpf', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">RG</label>
+              <input
+                type="text"
+                value={dados.rg}
+                onChange={(e) => handleChange('rg', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Data Nascimento</label>
+              <input
+                type="date"
+                value={dados.dataNascimento}
+                onChange={(e) => handleChange('dataNascimento', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Estado Civil</label>
+              <input
+                type="text"
+                value={dados.estadoCivil}
+                onChange={(e) => handleChange('estadoCivil', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Profissão</label>
+              <input
+                type="text"
+                value={dados.profissao}
+                onChange={(e) => handleChange('profissao', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Formação</label>
+              <input
+                type="text"
+                value={dados.formacao}
+                onChange={(e) => handleChange('formacao', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Status *</label>
+              <select
+                value={dados.status}
+                onChange={(e) => handleChange('status', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                required
+              >
+                <option value="Ativo">Ativo</option>
+                <option value="Inativo">Inativo</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Naturalidade</label>
+              <input
+                type="text"
+                value={dados.naturalidade}
+                onChange={(e) => handleChange('naturalidade', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Cidade</label>
+              <input
+                type="text"
+                value={dados.cidade}
+                onChange={(e) => handleChange('cidade', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Celular</label>
+              <input
+                type="text"
+                value={dados.celular}
+                onChange={(e) => handleChange('celular', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Endereço</label>
+              <input
+                type="text"
+                value={dados.endereco}
+                onChange={(e) => handleChange('endereco', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+              <input
+                type="email"
+                value={dados.email}
+                onChange={(e) => handleChange('email', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Local de Trabalho</label>
+              <input
+                type="text"
+                value={dados.localTrabalho}
+                onChange={(e) => handleChange('localTrabalho', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Dados Maçônicos */}
+        <div>
+          <h3 className="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Dados Maçônicos</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Cargo Atual</label>
+              <input
+                type="text"
+                value={dados.cargoAtual}
+                onChange={(e) => handleChange('cargoAtual', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                placeholder="Ex: Venerável Mestre"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Data de Iniciação</label>
+              <input
+                type="date"
+                value={dados.dataIniciacao}
+                onChange={(e) => handleChange('dataIniciacao', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Data de Elevação</label>
+              <input
+                type="date"
+                value={dados.dataElevacao}
+                onChange={(e) => handleChange('dataElevacao', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Data de Exaltação</label>
+              <input
+                type="date"
+                value={dados.dataExaltacao}
+                onChange={(e) => handleChange('dataExaltacao', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Tempo de Maçonaria</label>
+              <input
+                type="text"
+                value={dados.tempoMaconaria}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50"
+                readOnly
+              />
+            </div>
+          </div>
+
+          {/* Histórico de Cargos */}
+          <div className="mt-4">
+            <div className="flex justify-between items-center mb-2">
+              <label className="block text-sm font-medium text-gray-700">Histórico de Cargos</label>
+              <button
+                type="button"
+                onClick={handleAdicionarCargo}
+                className="text-blue-600 hover:text-blue-800 text-sm flex items-center space-x-1"
+              >
+                <Plus size={16} />
+                <span>Adicionar Cargo</span>
+              </button>
+            </div>
+            <div className="border border-gray-300 rounded-lg overflow-hidden">
+              <table className="w-full">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Ano</th>
+                    <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Cargo</th>
+                    <th className="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase w-20">Ações</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {dados.historioCargos.map((cargo, index) => (
+                    <tr key={index}>
+                      <td className="px-4 py-2">
+                        <input
+                          type="text"
+                          value={cargo.ano}
+                          onChange={(e) => handleChangeCargo(index, 'ano', e.target.value)}
+                          className="w-full px-2 py-1 border border-gray-300 rounded"
+                          placeholder="2024"
+                        />
+                      </td>
+                      <td className="px-4 py-2">
+                        <input
+                          type="text"
+                          value={cargo.cargo}
+                          onChange={(e) => handleChangeCargo(index, 'cargo', e.target.value)}
+                          className="w-full px-2 py-1 border border-gray-300 rounded"
+                          placeholder="Venerável Mestre"
+                        />
+                      </td>
+                      <td className="px-4 py-2 text-center">
+                        <button
+                          type="button"
+                          onClick={() => handleRemoverCargo(index)}
+                          className="text-red-600 hover:text-red-800"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                  {dados.historioCargos.length === 0 && (
+                    <tr>
+                      <td colSpan="3" className="px-4 py-8 text-center text-gray-500">
+                        Nenhum cargo cadastrado. Clique em "Adicionar Cargo" para começar.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        {/* Dados Familiares */}
+        <div>
+          <h3 className="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Dados Familiares</h3>
+          
+          {/* Esposa */}
+          <div className="mb-4">
+            <h4 className="font-semibold text-gray-700 mb-2">Esposa</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                <input
+                  type="text"
+                  value={dados.esposa.nome}
+                  onChange={(e) => handleChangeAninhado('esposa', 'nome', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Data de Nascimento</label>
+                <input
+                  type="date"
+                  value={dados.esposa.dataNascimento}
+                  onChange={(e) => handleChangeAninhado('esposa', 'dataNascimento', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Pai */}
+          <div className="mb-4">
+            <h4 className="font-semibold text-gray-700 mb-2">Pai</h4>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                <input
+                  type="text"
+                  value={dados.pai.nome}
+                  onChange={(e) => handleChangeAninhado('pai', 'nome', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Data Nascimento</label>
+                <input
+                  type="date"
+                  value={dados.pai.dataNascimento}
+                  onChange={(e) => handleChangeAninhado('pai', 'dataNascimento', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Falecido</label>
+                <select
+                  value={dados.pai.falecido}
+                  onChange={(e) => handleChangeAninhado('pai', 'falecido', e.target.value === 'true')}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="false">Não</option>
+                  <option value="true">Sim</option>
+                </select>
+              </div>
+              {dados.pai.falecido && (
+                <div className="md:col-span-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Data Óbito</label>
+                  <input
+                    type="date"
+                    value={dados.pai.dataObito}
+                    onChange={(e) => handleChangeAninhado('pai', 'dataObito', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Mãe */}
+          <div className="mb-4">
+            <h4 className="font-semibold text-gray-700 mb-2">Mãe</h4>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                <input
+                  type="text"
+                  value={dados.mae.nome}
+                  onChange={(e) => handleChangeAninhado('mae', 'nome', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Data Nascimento</label>
+                <input
+                  type="date"
+                  value={dados.mae.dataNascimento}
+                  onChange={(e) => handleChangeAninhado('mae', 'dataNascimento', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Falecido</label>
+                <select
+                  value={dados.mae.falecido}
+                  onChange={(e) => handleChangeAninhado('mae', 'falecido', e.target.value === 'true')}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="false">Não</option>
+                  <option value="true">Sim</option>
+                </select>
+              </div>
+              {dados.mae.falecido && (
+                <div className="md:col-span-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Data Óbito</label>
+                  <input
+                    type="date"
+                    value={dados.mae.dataObito}
+                    onChange={(e) => handleChangeAninhado('mae', 'dataObito', e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Filhos */}
+          <div>
+            <div className="flex justify-between items-center mb-2">
+              <h4 className="font-semibold text-gray-700">Filhos</h4>
+              <button
+                type="button"
+                onClick={handleAdicionarFilho}
+                className="text-blue-600 hover:text-blue-800 text-sm flex items-center space-x-1"
+              >
+                <Plus size={16} />
+                <span>Adicionar Filho</span>
+              </button>
+            </div>
+            {dados.filhos.map((filho, index) => (
+              <div key={index} className="border border-gray-300 rounded-lg p-4 mb-3 bg-gray-50">
+                <div className="flex justify-between items-start mb-2">
+                  <span className="text-sm font-medium text-gray-700">Filho {index + 1}</span>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoverFilho(index)}
+                    className="text-red-600 hover:text-red-800"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                    <input
+                      type="text"
+                      value={filho.nome}
+                      onChange={(e) => handleChangeFilho(index, 'nome', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Data Nascimento</label>
+                    <input
+                      type="date"
+                      value={filho.dataNascimento}
+                      onChange={(e) => handleChangeFilho(index, 'dataNascimento', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Falecido</label>
+                    <select
+                      value={filho.falecido}
+                      onChange={(e) => handleChangeFilho(index, 'falecido', e.target.value === 'true')}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="false">Não</option>
+                      <option value="true">Sim</option>
+                    </select>
+                  </div>
+                  {filho.falecido && (
+                    <div className="md:col-span-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Data Óbito</label>
+                      <input
+                        type="date"
+                        value={filho.dataObito}
+                        onChange={(e) => handleChangeFilho(index, 'dataObito', e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+            {dados.filhos.length === 0 && (
+              <div className="text-center py-8 text-gray-500 border border-gray-300 rounded-lg">
+                Nenhum filho cadastrado. Clique em "Adicionar Filho" para começar.
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Botões */}
+        <div className="flex justify-end space-x-4 pt-4 border-t">
+          <button
+            type="button"
+            onClick={onCancelar}
+            className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            className="px-6 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
+          >
+            Salvar Irmão
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+// Detalhes do Irmão
+function DetalhesIrmao({ irmao, onVoltar, onEditar }) {
+  const gerarPDF = () => {
+    const conteudo = `
+FICHA CADASTRAL - ${irmao.nome}
+
+=== DADOS PESSOAIS ===
+CIM: ${irmao.cim}
+Nome: ${irmao.nome}
+CPF: ${irmao.cpf || 'Não informado'}
+RG: ${irmao.rg || 'Não informado'}
+Data de Nascimento: ${irmao.dataNascimento || 'Não informado'}
+Estado Civil: ${irmao.estadoCivil || 'Não informado'}
+Profissão: ${irmao.profissao || 'Não informado'}
+Formação: ${irmao.formacao || 'Não informado'}
+Naturalidade: ${irmao.naturalidade || 'Não informado'}
+Endereço: ${irmao.endereco || 'Não informado'}
+Cidade: ${irmao.cidade || 'Não informado'}
+Celular: ${irmao.celular || 'Não informado'}
+E-mail: ${irmao.email || 'Não informado'}
+Local de Trabalho: ${irmao.localTrabalho || 'Não informado'}
+
+=== DADOS MAÇÔNICOS ===
+Status: ${irmao.status}
+Cargo Atual: ${irmao.cargoAtual || 'Não informado'}
+Data de Iniciação: ${irmao.dataIniciacao || 'Não informado'}
+Data de Elevação: ${irmao.dataElevacao || 'Não informado'}
+Data de Exaltação: ${irmao.dataExaltacao || 'Não informado'}
+Tempo de Maçonaria: ${irmao.tempoMaconaria || 'Não calculado'}
+
+=== HISTÓRICO DE CARGOS ===
+${irmao.historioCargos && irmao.historioCargos.length > 0 
+  ? irmao.historioCargos.map(c => `${c.ano} - ${c.cargo}`).join('\n')
+  : 'Nenhum cargo registrado'}
+
+=== DADOS FAMILIARES ===
+Esposa: ${irmao.esposa?.nome || 'Não informado'}
+${irmao.esposa?.dataNascimento ? `Data Nascimento: ${irmao.esposa.dataNascimento}` : ''}
+
+Pai: ${irmao.pai?.nome || 'Não informado'}
+${irmao.pai?.dataNascimento ? `Data Nascimento: ${irmao.pai.dataNascimento}` : ''}
+${irmao.pai?.falecido ? `Falecido em: ${irmao.pai.dataObito}` : ''}
+
+Mãe: ${irmao.mae?.nome || 'Não informado'}
+${irmao.mae?.dataNascimento ? `Data Nascimento: ${irmao.mae.dataNascimento}` : ''}
+${irmao.mae?.falecido ? `Falecido em: ${irmao.mae.dataObito}` : ''}
+
+Filhos:
+${irmao.filhos && irmao.filhos.length > 0
+  ? irmao.filhos.map((f, i) => `${i + 1}. ${f.nome} - Nasc: ${f.dataNascimento}${f.falecido ? ` (Falecido em ${f.dataObito})` : ''}`).join('\n')
+  : 'Nenhum filho registrado'}
+    `;
+
+    const blob = new Blob([conteudo], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ficha_${irmao.nome.replace(/\s/g, '_')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-800">Detalhes do Irmão</h2>
+        <div className="flex space-x-2">
+          <button
+            onClick={gerarPDF}
+            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center space-x-2"
+          >
+            <Download size={18} />
+            <span>Baixar PDF</span>
+          </button>
+          <button
+            onClick={onEditar}
+            className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition flex items-center space-x-2"
+          >
+            <Edit2 size={18} />
+            <span>Editar</span>
+          </button>
+          <button
+            onClick={onVoltar}
+            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
+          >
+            Voltar
+          </button>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-lg shadow p-6 space-y-6">
+        {/* Dados Pessoais */}
+        <div>
+          <h3 className="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Dados Pessoais</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><span className="font-semibold">CIM:</span> {irmao.cim}</div>
+            <div><span className="font-semibold">Nome:</span> {irmao.nome}</div>
+            <div><span className="font-semibold">CPF:</span> {irmao.cpf || 'Não informado'}</div>
+            <div><span className="font-semibold">RG:</span> {irmao.rg || 'Não informado'}</div>
+            <div><span className="font-semibold">Data Nascimento:</span> {irmao.dataNascimento || 'Não informado'}</div>
+            <div><span className="font-semibold">Estado Civil:</span> {irmao.estadoCivil || 'Não informado'}</div>
+            <div><span className="font-semibold">Profissão:</span> {irmao.profissao || 'Não informado'}</div>
+            <div><span className="font-semibold">Formação:</span> {irmao.formacao || 'Não informado'}</div>
+            <div><span className="font-semibold">Naturalidade:</span> {irmao.naturalidade || 'Não informado'}</div>
+            <div><span className="font-semibold">Cidade:</span> {irmao.cidade || 'Não informado'}</div>
+            <div><span className="font-semibold">Celular:</span> {irmao.celular || 'Não informado'}</div>
+            <div><span className="font-semibold">E-mail:</span> {irmao.email || 'Não informado'}</div>
+            <div className="md:col-span-2"><span className="font-semibold">Endereço:</span> {irmao.endereco || 'Não informado'}</div>
+            <div><span className="font-semibold">Local Trabalho:</span> {irmao.localTrabalho || 'Não informado'}</div>
+            <div>
+              <span className="font-semibold">Status:</span>{' '}
+              <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                irmao.status === 'Ativo' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+              }`}>
+                {irmao.status}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Dados Maçônicos */}
+        <div>
+          <h3 className="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Dados Maçônicos</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><span className="font-semibold">Cargo Atual:</span> {irmao.cargoAtual || 'Não informado'}</div>
+            <div><span className="font-semibold">Tempo Maçonaria:</span> {irmao.tempoMaconaria || 'Não calculado'}</div>
+            <div><span className="font-semibold">Data Iniciação:</span> {irmao.dataIniciacao || 'Não informado'}</div>
+            <div><span className="font-semibold">Data Elevação:</span> {irmao.dataElevacao || 'Não informado'}</div>
+            <div><span className="font-semibold">Data Exaltação:</span> {irmao.dataExaltacao || 'Não informado'}</div>
+          </div>
+
+          {irmao.historioCargos && irmao.historioCargos.length > 0 && (
+            <div className="mt-4">
+              <h4 className="font-semibold text-gray-700 mb-2">Histórico de Cargos</h4>
+              <div className="border border-gray-300 rounded-lg overflow-hidden">
+                <table className="w-full">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Ano</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Cargo</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {irmao.historioCargos.map((cargo, index) => (
+                      <tr key={index}>
+                        <td className="px-4 py-2">{cargo.ano}</td>
+                        <td className="px-4 py-2">{cargo.cargo}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Dados Familiares */}
+        <div>
+          <h3 className="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Dados Familiares</h3>
+          
+          {irmao.esposa?.nome && (
+            <div className="mb-4">
+              <h4 className="font-semibold text-gray-700 mb-2">Esposa</h4>
+              <div className="pl-4">
+                <div><span className="font-semibold">Nome:</span> {irmao.esposa.nome}</div>
+                {irmao.esposa.dataNascimento && (
+                  <div><span className="font-semibold">Data Nascimento:</span> {irmao.esposa.dataNascimento}</div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {irmao.pai?.nome && (
+            <div className="mb-4">
+              <h4 className="font-semibold text-gray-700 mb-2">Pai</h4>
+              <div className="pl-4">
+                <div><span className="font-semibold">Nome:</span> {irmao.pai.nome}</div>
+                {irmao.pai.dataNascimento && (
+                  <div><span className="font-semibold">Data Nascimento:</span> {irmao.pai.dataNascimento}</div>
+                )}
+                {irmao.pai.falecido && (
+                  <div className="text-red-600">
+                    <span className="font-semibold">Falecido em:</span> {irmao.pai.dataObito}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {irmao.mae?.nome && (
+            <div className="mb-4">
+              <h4 className="font-semibold text-gray-700 mb-2">Mãe</h4>
+              <div className="pl-4">
+                <div><span className="font-semibold">Nome:</span> {irmao.mae.nome}</div>
+                {irmao.mae.dataNascimento && (
+                  <div><span className="font-semibold">Data Nascimento:</span> {irmao.mae.dataNascimento}</div>
+                )}
+                {irmao.mae.falecido && (
+                  <div className="text-red-600">
+                    <span className="font-semibold">Falecido em:</span> {irmao.mae.dataObito}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {irmao.filhos && irmao.filhos.length > 0 && (
+            <div>
+              <h4 className="font-semibold text-gray-700 mb-2">Filhos</h4>
+              <div className="space-y-3">
+                {irmao.filhos.map((filho, index) => (
+                  <div key={index} className="pl-4 border-l-2 border-blue-500">
+                    <div><span className="font-semibold">Nome:</span> {filho.nome}</div>
+                    {filho.dataNascimento && (
+                      <div><span className="font-semibold">Data Nascimento:</span> {filho.dataNascimento}</div>
+                    )}
+                    {filho.falecido && (
+                      <div className="text-red-600">
+                        <span className="font-semibold">Falecido em:</span> {filho.dataObito}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Módulo de Usuários
+function ModuloUsuarios() {
+  const [usuarios, setUsuarios] = useState([]);
+  const [mostrarForm, setMostrarForm] = useState(false);
+  const [novoUsuario, setNovoUsuario] = useState({ usuario: '', senha: '', admin: false });
+
+  useEffect(() => {
+    carregarUsuarios();
+  }, []);
+
+  const carregarUsuarios = async () => {
+    try {
+      const result = await window.storage.get('usuarios');
+      if (result) {
+        setUsuarios(JSON.parse(result.value));
+      }
+    } catch (error) {
+      console.log('Erro ao carregar usuários');
+    }
+  };
+
+  const handleAdicionar = async () => {
+    if (!novoUsuario.usuario || !novoUsuario.senha) {
+      alert('Preencha todos os campos');
+      return;
+    }
+
+    const novo = { ...novoUsuario, id: Date.now() };
+    const novosUsuarios = [...usuarios, novo];
+    
+    try {
+      await window.storage.set('usuarios', JSON.stringify(novosUsuarios));
+      setUsuarios(novosUsuarios);
+      setNovoUsuario({ usuario: '', senha: '', admin: false });
+      setMostrarForm(false);
+      alert('Usuário cadastrado com sucesso!');
+    } catch (error) {
+      alert('Erro ao cadastrar usuário');
+    }
+  };
+
+  const handleExcluir = async (id) => {
+    if (usuarios.length === 1) {
+      alert('Não é possível excluir o último usuário do sistema');
+      return;
+    }
+
+    if (confirm('Deseja realmente excluir este usuário?')) {
+      const novosUsuarios = usuarios.filter(u => u.id !== id);
+      try {
+        await window.storage.set('usuarios', JSON.stringify(novosUsuarios));
+        setUsuarios(novosUsuarios);
+      } catch (error) {
+        alert('Erro ao excluir usuário');
+      }
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-800">Gerenciar Usuários</h2>
+        <button
+          onClick={() => setMostrarForm(!mostrarForm)}
+          className="bg-blue-900 text-white px-6 py-3 rounded-lg flex items-center space-x-2 hover:bg-blue-800 transition"
+        >
+          <Plus size={20} />
+          <span>Novo Usuário</span>
+        </button>
+      </div>
+
+      {mostrarForm && (
+        <div className="bg-white rounded-lg shadow p-6 mb-6">
+          <h3 className="text-xl font-bold text-gray-800 mb-4">Cadastrar Novo Usuário</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Usuário</label>
+              <input
+                type="text"
+                value={novoUsuario.usuario}
+                onChange={(e) => setNovoUsuario({ ...novoUsuario, usuario: e.target.value })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Senha</label>
+              <input
+                type="password"
+                value={novoUsuario.senha}
+                onChange={(e) => setNovoUsuario({ ...novoUsuario, senha: e.target.value })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Tipo</label>
+              <select
+                value={novoUsuario.admin}
+                onChange={(e) => setNovoUsuario({ ...novoUsuario, admin: e.target.value === 'true' })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="false">Usuário Normal</option>
+                <option value="true">Administrador</option>
+              </select>
+            </div>
+          </div>
+          <div className="flex justify-end space-x-2 mt-4">
+            <button
+              onClick={() => setMostrarForm(false)}
+              className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+            >
+              Cancelar
+            </button>
+            <button
+              onClick={handleAdicionar}
+              className="px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800"
+            >
+              Cadastrar
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <table className="w-full">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Usuário</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tipo</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Ações</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {usuarios.map((usuario) => (
+              <tr key={usuario.id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 text-sm font-medium text-gray-900">{usuario.usuario}</td>
+                <td className="px-6 py-4">
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    usuario.admin 
+                      ? 'bg-purple-100 text-purple-800' 
+                      : 'bg-gray-100 text-gray-800'
+                  }`}>
+                    {usuario.admin ? 'Administrador' : 'Usuário Normal'}
+                  </span>
+                </td>
+                <td className="px-6 py-4 text-sm">
+                  <button
+                    onClick={() => handleExcluir(usuario.id)}
+                    className="text-red-600 hover:text-red-800"
+                    title="Excluir"
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+// Módulo de Configurações
+function ModuloConfiguracoes({ setConfiguracoes }) {
+  const [dados, setDados] = useState({ nomeLoja: '', logo: '' });
+  const [carregando, setCarregando] = useState(true);
+
+  useEffect(() => {
+    carregarConfiguracoes();
+  }, []);
+
+  const carregarConfiguracoes = async () => {
+    try {
+      const result = await window.storage.get('config-loja');
+      if (result) {
+        setDados(JSON.parse(result.value));
+      }
+    } catch (error) {
+      console.log('Nenhuma configuração salva ainda');
+    }
+    setCarregando(false);
+  };
+
+  const handleSalvar = async () => {
+    try {
+      await window.storage.set('config-loja', JSON.stringify(dados));
+      setConfiguracoes(dados);
+      alert('Configurações salvas com sucesso! Faça logout e login novamente para ver as alterações.');
+    } catch (error) {
+      alert('Erro ao salvar configurações');
+    }
+  };
+
+  const handleImagemChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setDados({ ...dados, logo: reader.result });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  if (carregando) {
+    return <div className="text-center py-12">Carregando...</div>;
+  }
+
+  return (
+    <div className="max-w-2xl mx-auto">
+      <h2 className="text-3xl font-bold text-gray-800 mb-6">Configurações da Loja</h2>
+
+      <div className="bg-white rounded-lg shadow p-6 space-y-6">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Nome da Loja
+          </label>
+          <input
+            type="text"
+            value={dados.nomeLoja}
+            onChange={(e) => setDados({ ...dados, nomeLoja: e.target.value })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+            placeholder="Ex: Loja Maçônica Estrela do Oriente"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Logo da Loja
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImagemChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+          />
+          {dados.logo && (
+            <div className="mt-4">
+              <p className="text-sm text-gray-600 mb-2">Pré-visualização:</p>
+              <img src={dados.logo} alt="Logo" className="h-32 border border-gray-300 rounded-lg" />
+            </div>
+          )}
+        </div>
+
+        <div className="flex justify-end pt-4 border-t">
+          <button
+            onClick={handleSalvar}
+            className="px-6 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
+          >
+            Salvar Configurações
+          </button>
+        </div>
+      </div>
+
+      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+        <h3 className="font-semibold text-yellow-800 mb-2">Informações Importantes</h3>
+        <ul className="text-sm text-yellow-700 space-y-1">
+          <li>• Os dados são salvos de forma segura e persistente</li>
+          <li>• Faça logout e login novamente após alterar as configurações</li>
+          <li>• Recomendamos fazer backup regular dos dados importantes</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
